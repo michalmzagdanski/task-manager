@@ -345,13 +345,12 @@
             const input = editInput;
             const priorityInput = editPriorityInput;
             const dueDateInput = editDueDateInput;
-
             const task = tasks.find(task => task.id === editingTaskId);
 
-            task.text = input.value;
+            task.text = input.value.trim();
             task.priority = priorityInput.value;
             task.dueDate = dueDateInput.value;
-            task.notes = editNotesInput.value;
+            task.notes = editNotesInput.value.trim();
             task.updatedAt = new Date().toISOString();
 
             updateApp();
@@ -466,6 +465,8 @@
             let value = input.value;
             let dueDate = dueDateInput.value;
             let notes = notesInput.value;
+            value = value.trim();
+            notes = notes.trim();
             if (value === "") {
                 alert("Wpisz zadanie");
                 return;
