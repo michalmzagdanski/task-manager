@@ -128,9 +128,17 @@
 
         }
         function saveTasks() {
-            localStorage.setItem("tasks", JSON.stringify(tasks));
-        }
 
+
+            try {
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+
+            }
+            catch {
+                alert("Pamięć pełna!");
+
+            }
+        }
         async function loadTasks() {
             isLoadingTasks = true;
             renderTasks();
@@ -463,10 +471,10 @@
         }
         function addTask() {
             const priority = priorityInput.value;
-            let input = taskInput;
-            const value = input.value;
+            const input = taskInput;
+            let value = input.value;
             const dueDate = dueDateInput.value;
-            const notes = notesInput.value;
+            let notes = notesInput.value;
             value = value.trim();
             notes = notes.trim();
             if (value === "") {
