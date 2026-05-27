@@ -462,11 +462,11 @@
 
         }
         function addTask() {
-            let priority = priorityInput.value;
+            const priority = priorityInput.value;
             let input = taskInput;
-            let value = input.value;
-            let dueDate = dueDateInput.value;
-            let notes = notesInput.value;
+            const value = input.value;
+            const dueDate = dueDateInput.value;
+            const notes = notesInput.value;
             value = value.trim();
             notes = notes.trim();
             if (value === "") {
