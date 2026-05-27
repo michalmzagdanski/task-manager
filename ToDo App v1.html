@@ -43,6 +43,7 @@
         <option value="oldest">Oldest</option>
     </select>
     <button onclick="addTask()">Dodaj zadanie</button>
+    <button onclick="setFilter('highPriority')">Ważne!!</button>
     <button onclick="setFilter('all')">Wszystkie</button>
     <button onclick="setFilter('active')">Aktywne</button>
     <button onclick="setFilter('done')">Zrobione</button>
@@ -188,6 +189,12 @@
 
         function getTasksToShow() {
             let tasksToShow = [...tasks];
+            if (currentFilter === "highPriority") {
+                tasksToShow = tasks.filter(task => !task.done && task.priority === "high");
+
+
+            }
+
             if (currentFilter === "active") {
                 tasksToShow = tasks.filter(task => !task.done);
             }
