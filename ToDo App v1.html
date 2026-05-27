@@ -108,6 +108,7 @@
         const cancelEditBtn = document.getElementById("cancelEditBtn");
 
         async function startApp() {
+            loadCurrentFilter()
             await loadTasks();
             renderTaskDetails();
         }
@@ -115,8 +116,19 @@
         startApp();
         function setFilter(filter) {
             currentFilter = filter;
+            saveCurrentFilter()
             renderTasks();
         }
+        function loadCurrentFilter() {
+            const saved = localStorage.getItem("currentFilter");
+            if (saved !== null) {
+                currentFilter = saved;
+            }
+        }
+        function saveCurrentFilter() {
+            localStorage.setItem("currentFilter", currentFilter);
+        }
+
         function updateCounter(count) {
             counter.innerText =
                 "Widoczne zadania: " + count;
@@ -535,8 +547,7 @@
             setSort(sortSelect.value);
         }
         cancelEditBtn.addEventListener("click", closeEditModal);
-        loadTasks();
-        renderTaskDetails();
+
     </script>
 
 </body>
