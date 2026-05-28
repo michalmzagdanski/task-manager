@@ -53,6 +53,18 @@ function loadCurrentFilter() {
 function saveCurrentFilter() {
     localStorage.setItem("currentFilter", currentFilter);
 }
+function getPriorityIcon(priority) {
+    if (priority === "high") {
+        return "🔴";
+    }
+    else if (priority === "medium") {
+        return "🟡";
+    }
+    else if (priority === "low") {
+        return "🟢";
+    }
+}
+
 
 function updateCounter(count) {
     counter.innerText =
@@ -332,17 +344,8 @@ function createTaskElement(task) {
 
     let span = document.createElement("span");
 
-    let icon = "";
 
-    if (task.priority === "high") {
-        icon = "🔴";
-    }
-    else if (task.priority === "medium") {
-        icon = "🟡";
-    }
-    else if (task.priority === "low") {
-        icon = "🟢";
-    }
+    const icon = getPriorityIcon(task.priority);
 
     let dateText = "";
 
