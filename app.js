@@ -64,6 +64,12 @@ function getPriorityIcon(priority) {
         return "🟢";
     }
 }
+function isOverdue(task) {
+    const today = getToday();
+    const taskDate = new Date(task.dueDate);
+    taskDate.setHours(0, 0, 0, 0);
+    return task.dueDate && task.done === false && taskDate < today;
+}
 
 
 function updateCounter(count) {
@@ -359,15 +365,13 @@ function createTaskElement(task) {
     let taskDate = new Date(task.dueDate);
     taskDate.setHours(0, 0, 0, 0);
 
-    if (
-        task.dueDate &&
-        task.done === false &&
-        taskDate < today
-    ) {
+    if
+        (isOverdue(task)) {
         span.style.color = "red";
         span.innerText += " ⛔ OVERDUE";
 
     }
+
     else if (
         task.dueDate &&
         task.done === false &&
