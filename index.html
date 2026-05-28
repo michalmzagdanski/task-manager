@@ -1,0 +1,57 @@
+<head>
+    <meta charset="UTF-8">
+    <title>Lista zadań</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>Moja lista zadań</h1>
+    <p id="counter">Liczba zadań: 0</p>
+    <select id="priorityInput">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+    </select>
+    <input id="taskInput" type="text" onkeydown="checkEnter(event)">
+    <input id="notesInput" type="text" placeholder="Notes...">
+    <input id="dueDateInput" type="date" onkeydown="checkEnter(event)">
+    <select id="sortSelect">
+        <option value="priority">Priority</option>
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+    </select>
+    <button onclick="addTask()">Dodaj zadanie</button>
+    <button onclick="setFilter('highPriority')">Ważne!!</button>
+    <button onclick="setFilter('all')">Wszystkie</button>
+    <button onclick="setFilter('active')">Aktywne</button>
+    <button onclick="setFilter('done')">Zrobione</button>
+    <button onclick="setFilter('overdue')">⛔ Spóźnione</button>
+    <button onclick="setFilter('dueToday')">📅 Today</button>
+    <button onclick="clearCompleted()">🧹 Clear completed</button>
+    <input id="searchInput" type="text" placeholder="Szukaj..." onkeyup="renderTasks()" />
+
+    <ul id="taskList"></ul>
+    <div id="taskDetails">
+    </div>
+    <div id="editModal" class="hidden">
+        <div class="modal-content">
+            <h2>Edit task</h2>
+
+            <input id="editInput" type="text" />
+            <select id="editPriorityInput">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+            <input id="editDueDateInput" type="date" />
+            <textarea id="editNotesInput"></textarea>
+            <button id="saveEditBtn">Save</button>
+            <button id="cancelEditBtn">Cancel</button>
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+
+</body>
