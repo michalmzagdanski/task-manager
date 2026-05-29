@@ -92,8 +92,11 @@ function deleteTask(id) {
     tasks = tasks.filter(task => task.id !== id);
     updateApp()
 }
-
-
+function toggleTask(id) {
+    const task = tasks.find(task => task.id === id);
+    task.done = !task.done;
+    updateApp()
+}
 function saveTasks() {
 
     try {
@@ -343,8 +346,7 @@ function createTaskElement(task) {
 
 
     checkbox.onclick = function () {
-        task.done = !task.done;
-        updateApp()
+        toggleTask(task.id)
     }
 
     let span = document.createElement("span");
