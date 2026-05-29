@@ -94,12 +94,13 @@ function deleteTask(id) {
 }
 function toggleTask(id) {
     const task = tasks.find(task => task.id === id);
+    if (!task) return;
     task.done = !task.done;
+
     updateApp()
 }
 function selectTask(id) {
     selectedTaskId = id;
-    renderTaskDetails();
     renderTasks();
 }
 function saveTasks() {
