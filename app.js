@@ -70,7 +70,12 @@ function isOverdue(task) {
     taskDate.setHours(0, 0, 0, 0);
     return task.dueDate && task.done === false && taskDate < today;
 }
-
+function isDueToday(task) {
+    const today = getToday();
+    const taskDate = new Date(task.dueDate);
+    taskDate.setHours(0, 0, 0, 0);
+    return task.dueDate && task.done === false && taskDate.getTime() === today.getTime();
+}
 
 function updateCounter(count) {
     counter.innerText =
@@ -372,10 +377,7 @@ function createTaskElement(task) {
 
     }
 
-    else if (
-        task.dueDate &&
-        task.done === false &&
-        taskDate.getTime() === today.getTime()) {
+    else if (isDueToday(task)) {
         span.style.color = "orange";
         span.innerText += " ⚠️Due Date";
     }
