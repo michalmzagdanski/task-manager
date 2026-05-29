@@ -15,3 +15,34 @@
     .hidden {
         display: none;
     }
+
+    body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+        background: #f9fafb;
+    }
+
+    h1 {
+        color: #111827;
+    }
+
+    input,
+    select,
+    button,
+    textarea {
+        padding: 8px;
+        margin: 4px;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    #taskDetails {
+        margin-top: 20px;
+        padding: 16px;
+        background: white;
+        border-radius: 8px;
+    }
