@@ -166,25 +166,15 @@ function getTasksToShow() {
     let today = getToday();
 
     if (currentFilter === "overdue") {
-        tasksToShow = tasks.filter(task =>
-            task.dueDate &&
-            task.done === false &&
-            new Date(task.dueDate) < today
-        );
+        tasksToShow = tasks.filter(isOverdue);
 
         tasksToShow.sort(function (a, b) {
             return new Date(a.dueDate) - new Date(b.dueDate);
         });
     }
     if (currentFilter === "dueToday") {
-        tasksToShow = tasks.filter(task => {
-            const taskDate = new Date(task.dueDate);
-            taskDate.setHours(0, 0, 0, 0);
+        tasksToShow = tasks.filter(isDueToday);
 
-            return task.dueDate &&
-                task.done === false &&
-                taskDate.getTime() === today.getTime();
-        });
 
         tasksToShow.sort(function (a, b) {
             return priorityOrder[a.priority] - priorityOrder[b.priority];
