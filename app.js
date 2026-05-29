@@ -88,16 +88,19 @@ function checkEnter(event) {
     }
 
 }
-function saveTasks() {
+function deleteTask(id) {
+    tasks = tasks.filter(task => task.id !== id);
+    updateApp()
+}
 
+
+function saveTasks() {
 
     try {
         localStorage.setItem("tasks", JSON.stringify(tasks));
-
     }
     catch {
         alert("Pamięć pełna!");
-
     }
 }
 async function loadTasks() {
@@ -128,6 +131,7 @@ async function loadTasks() {
     }
 
 }
+
 function updateApp() {
     saveTasks();
     renderTasks();
@@ -404,14 +408,12 @@ function createTaskElement(task) {
 
 
     button.onclick = function () {
-        let index = tasks.indexOf(task);
-        tasks.splice(index, 1);
-        updateApp()
-
+        deleteTask(task.id);
     }
     return li;
 
 }
+
 function addTask() {
     const priority = priorityInput.value;
     const input = taskInput;
