@@ -97,6 +97,11 @@ function toggleTask(id) {
     task.done = !task.done;
     updateApp()
 }
+function selectTask(id) {
+    selectedTaskId = id;
+    renderTaskDetails();
+    renderTasks();
+}
 function saveTasks() {
 
     try {
@@ -402,13 +407,10 @@ function createTaskElement(task) {
 
 
     span.onclick = function () {
-        selectedTaskId = task.id;
-        renderTaskDetails();
-        renderTasks();
+        selectTask(task.id)
+
+
     }
-
-
-
     button.onclick = function () {
         deleteTask(task.id);
     }
