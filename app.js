@@ -393,9 +393,11 @@ function createTaskElement(task) {
 
     let button = document.createElement("button");
     button.textContent = "❌";
+    button.classList.add("task-btn");
 
     let editButton = document.createElement("button");
     editButton.textContent = "✏️";
+    editButton.classList.add("task-btn");
 
     li.appendChild(checkbox);
     li.appendChild(span);

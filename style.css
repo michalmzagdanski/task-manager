@@ -21,29 +21,32 @@
         max-width: 900px;
         margin: 40px auto;
         padding: 0 20px;
-        background: #f9fafb;
+        background: #CAF0F8;
     }
 
     h1 {
-        color: #111827;
+        color: #03045E;
     }
 
     input,
     select,
-    button,
     textarea {
-        padding: 8px;
-        margin: 4px;
+        border: 2px solid #0077B6;
+        border-radius: 6px;
+        background: white;
     }
 
     button {
-        cursor: pointer;
+        background: #0077B6;
+        color: white;
+        border: none;
+        border-radius: 6px;
     }
 
     #taskDetails {
         margin-top: 20px;
         padding: 16px;
-        background: white;
+        background: #90E0EF;
         border-radius: 8px;
     }
 
@@ -57,4 +60,48 @@
 
     .due-today {
         color: orange;
+    }
+
+    input,
+    select,
+    button,
+    textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .filters button {
+        width: auto;
+    }
+
+    .task-btn {
+        width: auto;
+    }
+
+    li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        background: white;
+        border-radius: 6px;
+        margin: 4px 0;
+        flex-wrap: wrap;
+    }
+
+
+    li span {
+        flex: 1;
+    }
+
+    li span {
+        flex: 1;
+
+        min-width: 0;
     }

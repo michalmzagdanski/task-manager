@@ -1,5 +1,6 @@
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista zadań</title>
     <link rel="icon" type="image/png" href="icons/icon-192.png">
     <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -26,12 +27,14 @@
         <option value="oldest">Oldest</option>
     </select>
     <button onclick="addTask()">Add task</button>
-    <button onclick="setFilter('highPriority')">Important!!</button>
-    <button onclick="setFilter('all')">All</button>
-    <button onclick="setFilter('active')">Active</button>
-    <button onclick="setFilter('done')">Done</button>
-    <button onclick="setFilter('overdue')">⛔ Overdue</button>
-    <button onclick="setFilter('dueToday')">📅 Today</button>
+    <div class="filters">
+        <button onclick="setFilter('highPriority')">Important!!</button>
+        <button onclick="setFilter('all')">All</button>
+        <button onclick="setFilter('active')">Active</button>
+        <button onclick="setFilter('done')">Done</button>
+        <button onclick="setFilter('overdue')">⛔ Overdue</button>
+        <button onclick="setFilter('dueToday')">📅 Today</button>
+    </div>
     <button onclick="clearCompleted()">🧹 Clear completed</button>
     <input id="searchInput" type="text" placeholder="Search..." onkeyup="renderTasks()" />
 
