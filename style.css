@@ -46,3 +46,15 @@
         background: white;
         border-radius: 8px;
     }
+
+    .selected {
+        background-color: lightgreen;
+    }
+
+    .overdue {
+        color: red;
+    }
+
+    .due-today {
+        color: orange;
+    }

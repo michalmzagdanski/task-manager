@@ -8,7 +8,7 @@ let currentSort = "priority";
 
 let isLoadingTasks = false;
 let hasLoadingError = false;
-let priorityOrder = {
+const priorityOrder = {
     high: 1,
     medium: 2,
     low: 3
@@ -78,7 +78,7 @@ function isDueToday(task) {
 }
 
 function updateCounter(count) {
-    counter.innerText =
+    counter.textContent =
         "Widoczne zadania: " + count;
 }
 function checkEnter(event) {
@@ -366,7 +366,7 @@ function createTaskElement(task) {
         dateText = " 📅 " + task.dueDate;
     }
 
-    span.innerText = icon + " " + task.text + dateText;
+    span.textContent = icon + " " + task.text + dateText;
 
     let today = getToday();
     let taskDate = new Date(task.dueDate);
@@ -374,28 +374,28 @@ function createTaskElement(task) {
 
     if
         (isOverdue(task)) {
-        span.style.color = "red";
-        span.innerText += " ⛔ OVERDUE";
+        span.classList.add("overdue");
+        span.textContent += " ⛔ OVERDUE";
 
     }
 
     else if (isDueToday(task)) {
-        span.style.color = "orange";
-        span.innerText += " ⚠️Due Date";
+        span.classList.add("due-today");
+        span.textContent += " ⚠️Due Date";
     }
 
     if (task.done === true) {
         span.style.textDecoration = "line-through";
     }
     if (task.id === selectedTaskId) {
-        li.style.backgroundColor = "lightgreen";
+        li.classList.add("selected");
     }
 
     let button = document.createElement("button");
-    button.innerText = "❌";
+    button.textContent = "❌";
 
     let editButton = document.createElement("button");
-    editButton.innerText = "✏️";
+    editButton.textContent = "✏️";
 
     li.appendChild(checkbox);
     li.appendChild(span);
