@@ -79,7 +79,7 @@ function isDueToday(task) {
 
 function updateCounter(count) {
     counter.textContent =
-        "Widoczne zadania: " + count;
+        "Visible tasks: " + count;
 }
 function checkEnter(event) {
     if (event.key === "Enter") {
@@ -109,7 +109,7 @@ function saveTasks() {
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
     catch {
-        alert("Pamięć pełna!");
+        alert("Memory is full!");
     }
 }
 async function loadTasks() {
@@ -222,12 +222,12 @@ function getTasksToShow() {
 }
 function renderTaskDetails() {
     if (!selectedTaskId) {
-        taskDetails.innerHTML = "Wybierz zadanie";
+        taskDetails.innerHTML = "Choose a task";
         return;
     }
     const task = tasks.find(task => task.id === selectedTaskId);
     if (!task) {
-        taskDetails.innerHTML = "Task nie istnieje";
+        taskDetails.innerHTML = "Task not found";
         return;
 
     }
@@ -236,7 +236,7 @@ function renderTaskDetails() {
     taskDetails.innerHTML = `
             <h2>${task.text}</h2>
             <p>Priority: ${task.priority}</p>
-            <p>Notes: ${task.notes || "Brak notatek"}</p>
+            <p>Notes: ${task.notes || "Noteas are empty"}</p>
             <p>Created: ${createdDate.toLocaleDateString()}</p>
             <p>Updated:${updatedDate.toLocaleDateString()}</p>`;
 }
@@ -252,8 +252,8 @@ function renderTasks() {
     }
     if (hasLoadingError) {
         taskList.innerHTML = `
-                    <li>Nie udało się załadować tasków
-                   <button id="retryBtn">Spróbuj ponownie</button>
+                    <li>Failed to load tasks
+                   <button id="retryBtn">Please try again</button>
                    </li>`;
 
         const retryBtn = document.getElementById("retryBtn");
@@ -272,7 +272,7 @@ function renderTasks() {
         selectedTaskId = null;
         renderTaskDetails();
 
-        taskList.innerHTML = "<li>Brak zadań</li>";
+        taskList.innerHTML = "<li>No tasks</li>";
 
         return;
     }

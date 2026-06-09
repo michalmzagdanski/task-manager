@@ -10,8 +10,8 @@
 
 <body>
 
-    <h1>Moja lista zadań</h1>
-    <p id="counter">Liczba zadań: 0</p>
+    <h1>My Task Manager</h1>
+    <p id="counter">Tasks: 0</p>
     <select id="priorityInput">
         <option value="low">Low</option>
         <option value="medium" selected>Medium</option>
@@ -25,15 +25,15 @@
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
     </select>
-    <button onclick="addTask()">Dodaj zadanie</button>
-    <button onclick="setFilter('highPriority')">Ważne!!</button>
-    <button onclick="setFilter('all')">Wszystkie</button>
-    <button onclick="setFilter('active')">Aktywne</button>
-    <button onclick="setFilter('done')">Zrobione</button>
-    <button onclick="setFilter('overdue')">⛔ Spóźnione</button>
+    <button onclick="addTask()">Add task</button>
+    <button onclick="setFilter('highPriority')">Important!!</button>
+    <button onclick="setFilter('all')">All</button>
+    <button onclick="setFilter('active')">Active</button>
+    <button onclick="setFilter('done')">Done</button>
+    <button onclick="setFilter('overdue')">⛔ Overdue</button>
     <button onclick="setFilter('dueToday')">📅 Today</button>
     <button onclick="clearCompleted()">🧹 Clear completed</button>
-    <input id="searchInput" type="text" placeholder="Szukaj..." onkeyup="renderTasks()" />
+    <input id="searchInput" type="text" placeholder="Search..." onkeyup="renderTasks()" />
 
     <ul id="taskList"></ul>
     <div id="taskDetails">
