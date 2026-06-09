@@ -25,7 +25,7 @@
     }
 
     h1 {
-        color: #03045E;
+        color: #00b4d8;
     }
 
     input,
@@ -37,10 +37,10 @@
     }
 
     button {
-        background: #0077B6;
+        background: #5eb5e4;
         color: white;
         border: none;
-        border-radius: 6px;
+        border-radius: 15px;
     }
 
     #taskDetails {
@@ -78,11 +78,19 @@
 
     .filters button {
         width: auto;
+        padding: 6px 10px;
+        font-size: 13px;
     }
 
-    .task-btn {
+    button.task-btn {
+        background: white;
+        color: #1a7bb0;
+        border: 2px solid #0077B6;
         width: auto;
     }
+
+
+
 
     li {
         display: flex;
@@ -104,4 +112,26 @@
         flex: 1;
 
         min-width: 0;
+    }
+
+    #priorityInput,
+    #sortSelect,
+    #dueDateInput {
+        width: auto;
+    }
+
+    .button.secondary-btn {
+        background: white;
+        color: #0077B6;
+        border: 2px solid #3ca7e1;
+    }
+
+    .main-btn {
+        width: 50%;
+        display: block;
+        margin: 4px auto;
+    }
+
+    body>* {
+        margin-bottom: 8px;
     }

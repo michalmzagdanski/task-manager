@@ -26,16 +26,16 @@
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
     </select>
-    <button onclick="addTask()">Add task</button>
+    <button onclick="addTask()" class="main-btn">Add task</button>
     <div class="filters">
-        <button onclick="setFilter('highPriority')">Important!!</button>
+        <button onclick="setFilter('highPriority')">ASAP!</button>
         <button onclick="setFilter('all')">All</button>
         <button onclick="setFilter('active')">Active</button>
         <button onclick="setFilter('done')">Done</button>
-        <button onclick="setFilter('overdue')">⛔ Overdue</button>
-        <button onclick="setFilter('dueToday')">📅 Today</button>
+        <button onclick="setFilter('overdue')"> Late</button>
+        <button onclick="setFilter('dueToday')"> Today</button>
     </div>
-    <button onclick="clearCompleted()">🧹 Clear completed</button>
+    <button onclick="clearCompleted()" class="main-btn">🧹 Clear completed</button>
     <input id="searchInput" type="text" placeholder="Search..." onkeyup="renderTasks()" />
 
     <ul id="taskList"></ul>
@@ -53,8 +53,8 @@
             </select>
             <input id="editDueDateInput" type="date" />
             <textarea id="editNotesInput"></textarea>
-            <button id="saveEditBtn">Save</button>
-            <button id="cancelEditBtn">Cancel</button>
+            <button id="saveEditBtn" class="secondary-btn">Save</button>
+            <button id="cancelEditBtn" class="secondary-btn">Cancel</button>
         </div>
     </div>
 
