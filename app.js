@@ -68,13 +68,13 @@ function isOverdue(task) {
     const today = getToday();
     const taskDate = new Date(task.dueDate);
     taskDate.setHours(0, 0, 0, 0);
-    return task.dueDate && task.done === false && taskDate < today;
+    return task.dueDate && !task.done && taskDate < today;
 }
 function isDueToday(task) {
     const today = getToday();
     const taskDate = new Date(task.dueDate);
     taskDate.setHours(0, 0, 0, 0);
-    return task.dueDate && task.done === false && taskDate.getTime() === today.getTime();
+    return task.dueDate && !task.done && taskDate.getTime() === today.getTime();
 }
 
 function updateCounter(count) {
@@ -447,7 +447,6 @@ function addTask() {
     input.focus();
     priorityInput.value = "medium";
     dueDateInput.value = "";
-    notes: ""
     notesInput.value = "";
 
     updateApp();
