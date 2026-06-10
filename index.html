@@ -20,8 +20,10 @@
     </select>
     <input id="taskInput" type="text" placeholder="Add a task..." onkeydown="checkEnter(event)">
     <input id="notesInput" type="text" placeholder="Notes...">
-    <input id="dueDateInput" type="date" placeholder="Due date" onkeydown="checkEnter(event)">
-    <select id="sortSelect">
+    <div class="date-field">
+        <label for="dueDateInput">Due date</label>
+        <input id="dueDateInput" type="date" onkeydown="checkEnter(event)">
+    </div> <select id="sortSelect">
         <option value="priority">Priority</option>
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>

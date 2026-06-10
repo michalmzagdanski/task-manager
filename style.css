@@ -164,3 +164,15 @@
         background: #e8f8ec;
         border-radius: 8px;
     }
+
+    .date-field {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .date-field label {
+        font-size: 14px;
+        font-weight: bold;
+        color: #185e6c;
+    }
