@@ -422,7 +422,7 @@ function addTask() {
     value = value.trim();
     notes = notes.trim();
     if (value === "") {
-        alert("Wpisz zadanie");
+        alert("Please enter a task");
         return;
     }
     let newTask = {
