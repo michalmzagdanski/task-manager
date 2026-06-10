@@ -20,7 +20,6 @@ const priorityInput = document.getElementById("priorityInput");
 const dueDateInput = document.getElementById("dueDateInput");
 const searchInput = document.getElementById("searchInput");
 const taskList = document.getElementById("taskList");
-const taskDetails = document.getElementById("taskDetails");
 const counter = document.getElementById("counter");
 const sortSelect = document.getElementById("sortSelect");
 
@@ -35,7 +34,6 @@ const cancelEditBtn = document.getElementById("cancelEditBtn");
 async function startApp() {
     loadCurrentFilter()
     await loadTasks();
-    renderTaskDetails();
 }
 
 startApp();
@@ -220,29 +218,6 @@ function getTasksToShow() {
 
     return tasksToShow;
 }
-function renderTaskDetails() {
-    if (!selectedTaskId) {
-        taskDetails.innerHTML = "Choose a task";
-        return;
-    }
-    const task = tasks.find(task => task.id === selectedTaskId);
-    if (!task) {
-        taskDetails.innerHTML = "Task not found";
-        return;
-
-    }
-    const createdDate = new Date(task.createdAt);
-    const updatedDate = new Date(task.updatedAt);
-    taskDetails.innerHTML = `
-            <h2>${task.text}</h2>
-            <p>Priority: ${task.priority}</p>
-            <p>Notes: ${task.notes || "Noteas are empty"}</p>
-            <p>Created: ${createdDate.toLocaleDateString()}</p>
-            <p>Updated:${updatedDate.toLocaleDateString()}</p>`;
-}
-
-
-
 
 
 function renderTasks() {
@@ -270,8 +245,6 @@ function renderTasks() {
         updateCounter(0);
 
         selectedTaskId = null;
-        renderTaskDetails();
-
         taskList.innerHTML = "<li>No tasks</li>";
 
         return;
@@ -286,7 +259,6 @@ function renderTasks() {
 
 
 
-    renderTaskDetails();
 
     updateCounter(tasksToShow.length);
 
@@ -297,6 +269,18 @@ function renderTasks() {
         taskList.appendChild(li);
     }
 
+}
+function getTaskDetailsHtml(task) {
+    const createdDate = new Date(task.createdAt);
+    const updatedDate = new Date(task.updatedAt);
+
+    return `
+        <h2>${task.text}</h2>
+        <p>Priority: ${task.priority}</p>
+        <p>Notes: ${task.notes || "No notes"}</p>
+        <p>Created: ${createdDate.toLocaleDateString()}</p>
+        <p>Updated: ${updatedDate.toLocaleDateString()}</p>
+    `;
 }
 function openEditModal(id) {
     editingTaskId = id;
@@ -387,9 +371,7 @@ function createTaskElement(task) {
     if (task.done === true) {
         span.style.textDecoration = "line-through";
     }
-    if (task.id === selectedTaskId) {
-        li.classList.add("selected");
-    }
+
 
     let button = document.createElement("button");
     button.textContent = "❌";
@@ -403,6 +385,16 @@ function createTaskElement(task) {
     li.appendChild(span);
     li.appendChild(button);
     li.appendChild(editButton);
+    if (task.id === selectedTaskId) {
+        li.classList.add("selected");
+
+        const detailsDiv = document.createElement("div");
+        detailsDiv.classList.add("inline-details");
+
+        detailsDiv.innerHTML = getTaskDetailsHtml(task);
+
+        li.appendChild(detailsDiv);
+    }
 
     editButton.onclick = function () {
         openEditModal(task.id);
@@ -479,3 +471,10 @@ sortSelect.onchange = function () {
     setSort(sortSelect.value);
 }
 cancelEditBtn.addEventListener("click", closeEditModal);
+
+document.addEventListener("click", function (event) {
+    if (!event.target.closest("li")) {
+        selectedTaskId = null;
+        renderTasks();
+    }
+});

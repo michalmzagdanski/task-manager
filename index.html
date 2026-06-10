@@ -26,7 +26,9 @@
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
     </select>
-    <button onclick="addTask()" class="main-btn">Add task</button>
+    <button onclick="addTask()" class="add-btn">Add task</button>
+    <input id="searchInput" type="text" placeholder="Search tasks.." onkeyup="renderTasks()" />
+
     <div class="filters">
         <button onclick="setFilter('highPriority')">ASAP!</button>
         <button onclick="setFilter('all')">All</button>
@@ -35,12 +37,11 @@
         <button onclick="setFilter('overdue')"> Late</button>
         <button onclick="setFilter('dueToday')"> Today</button>
     </div>
-    <button onclick="clearCompleted()" class="main-btn">🧹 Clear completed</button>
-    <input id="searchInput" type="text" placeholder="Search..." onkeyup="renderTasks()" />
+    <button onclick="clearCompleted()" class="clear-btn">🧹 Clear completed</button>
 
+    <h2 class="task-list-title">Task List</h2>
     <ul id="taskList"></ul>
-    <div id="taskDetails">
-    </div>
+
     <div id="editModal" class="hidden">
         <div class="modal-content">
             <h2>Edit task</h2>

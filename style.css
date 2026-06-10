@@ -25,8 +25,11 @@
     }
 
     h1 {
-        color: #00b4d8;
+        color: #185e6c;
+        text-align: center;
+
     }
+
 
     input,
     select,
@@ -51,7 +54,8 @@
     }
 
     .selected {
-        background-color: lightgreen;
+        border: 2px solid #0fa423;
+        background: white;
     }
 
     .overdue {
@@ -68,6 +72,10 @@
     textarea {
         width: 100%;
         box-sizing: border-box;
+    }
+
+    li input[type="checkbox"] {
+        width: auto;
     }
 
     .filters {
@@ -120,13 +128,21 @@
         width: auto;
     }
 
-    .button.secondary-btn {
+    button.secondary-btn {
         background: white;
         color: #0077B6;
         border: 2px solid #3ca7e1;
     }
 
-    .main-btn {
+    .add-btn {
+        background: #0fa423;
+        width: 50%;
+        display: block;
+        margin: 4px auto;
+    }
+
+    .clear-btn {
+        background: #060879;
         width: 50%;
         display: block;
         margin: 4px auto;
@@ -134,4 +150,17 @@
 
     body>* {
         margin-bottom: 8px;
+    }
+
+    .task-list-title {
+        color: #0db2d3;
+        text-align: center;
+    }
+
+    .inline-details {
+        width: 100%;
+        margin-top: 12px;
+        padding: 12px;
+        background: #e8f8ec;
+        border-radius: 8px;
     }
